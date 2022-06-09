@@ -4,4 +4,4 @@ export default function Login(){
             <h1>Tutaj bedzie strona logowania</h1>
         </div>
     )
-}
+};

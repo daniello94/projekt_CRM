@@ -1,7 +1,6 @@
 const User = require('../modules/User');
 const bcrypt = require('bcrypt');
 
-
 function userAdd(data,cb){
     let newUser = new User (data);
 
@@ -12,7 +11,7 @@ function userAdd(data,cb){
             cb(null,user);
         }
     })
-}
+};
 
 function userLogin(data,cb){
     User.findOne({email:data.email}).exec(function(err,user){
@@ -22,7 +21,8 @@ function userLogin(data,cb){
         }
         if(!user){
             cb(null,user)
-        }
+        };
+
         bcrypt.compare(data.password, user.password, function(err,logged){
             if(err){
                 cb(err)
@@ -34,8 +34,9 @@ function userLogin(data,cb){
             }
         })
     })
-}
+};
+
 module.exports={
     add: userAdd,
     login: userLogin
-}
+};

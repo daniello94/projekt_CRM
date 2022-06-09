@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-
 const client = require('../controllers/client.controller');
 const auth =require('../api/middlewares/auth')
+
 router.post('/all', function (req, res) {
     client.list(function (err, clients) {
         if (err) {
@@ -42,6 +42,7 @@ router.put('/upodate/:id', function (req, res) {
         }
     })
 });
+
 router.get('/:id', function (req, res) {
     client.get(req.params.id, function (err, client) {
         if (err) {
@@ -53,7 +54,8 @@ router.get('/:id', function (req, res) {
             res.json(client)
         }
     })
-})
+});
+
 router.delete('/delete/:id',function(req,res){
     client.delete(req.params.id,function(err,data){
         if(err){
@@ -65,5 +67,6 @@ router.delete('/delete/:id',function(req,res){
             res.json(data)
         }
     })
-})
+});
+
 module.exports = router;

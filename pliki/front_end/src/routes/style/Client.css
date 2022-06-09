@@ -1,0 +1,45 @@
+.table {
+    text-align: center;
+
+}
+
+table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    margin-bottom: 10px;
+
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 5px 5px;
+}
+
+th, .text {
+    background: rgb(6, 44, 77);
+    color: white;
+}
+
+.btn-1 {
+    text-decoration: none;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+    transition: .7s;
+}
+
+.btn-1:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.akcje {
+    width: 25%;
+}

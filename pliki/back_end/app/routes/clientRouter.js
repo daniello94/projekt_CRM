@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const client = require('../controllers/client.controller');
 
 router.post('/all', function (req, res) {
@@ -12,7 +11,7 @@ router.post('/all', function (req, res) {
 
 router.get("/add", function (req, res) {
     res.send('nowy klijent')
-})
+});
 router.post('/add', function (req, res) {
     client.add(req.body, function (err, client) {
         if (err) res.send(err)
@@ -23,7 +22,7 @@ router.post('/add', function (req, res) {
 router.get('/upodate/:id', function (req, res) {
     client.get(req.params.id, function (err, client) {
         if (err) res.send(err)
-        res.send('Zaktulaiziwano', client)
+        res.send('Zaktulaizowano', client)
     })
 });
 
@@ -32,11 +31,12 @@ router.get('/:id',function(req,res){
         if(err) res.send(err)
         res.send(client)
     })
-})
+});
 
 router.get('/delete/:id',function(req,res){
     client.delete(req.params.id,function(err, client){
         res.send('usnieto klijeta')
     })
-})
+});
+
 module.exports = router;
