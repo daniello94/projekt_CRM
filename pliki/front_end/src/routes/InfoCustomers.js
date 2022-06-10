@@ -15,7 +15,6 @@ export default function InfoCustomers() {
 
     let { id } = useParams();
 
-
     function editClick(id) {
         setUpodate(id)
     };
@@ -27,8 +26,8 @@ export default function InfoCustomers() {
             }
         })
             .then(() => {
-                setStatus("")
-
+                setUpodate("")
+                oneClient(_id)
             })
     };
 
@@ -76,7 +75,7 @@ export default function InfoCustomers() {
                                 <input type="text" placeholder="Ulica" value={street} onChange={(e) => setStreet(e.target.value)} name="street"></input>
                             </td>
                             <td>
-                                <input type="text" placeholder="numer" value={nr} onChange={(e) => setNr(e.target.value)} name="nr"></input>
+                                <input type="text" placeholder="Numer" value={nr} onChange={(e) => setNr(e.target.value)} name="nr"></input>
                             </td>
                             <td>
                                 <input type="text" placeholder="Kod pocztowy" value={zipcode} onChange={(e) => setZipcode(e.target.value)} name="city"></input>
@@ -86,6 +85,7 @@ export default function InfoCustomers() {
                     </tbody>
                 </table>
                 <button className="btn-1" onClick={() => upodateClient(status._id)}>Zapisz</button>
+                <button className="btn-1">Dodaj akcje</button>
                 <button className="btn-1" onClick={(() => setUpodate(""))}>Anuluj</button>
             </div>
         )
@@ -95,12 +95,21 @@ export default function InfoCustomers() {
             <table>
                 <thead>
                     <tr>
-                        <th colSpan="2">{status.name}</th>
+                        <th colSpan="3">{status.name}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><th>Firma</th><td>{status.company}</td></tr>
-                    <tr><th>NIP</th><td>{status.nip}</td></tr>
+                    <tr><th>Firma</th><td colSpan="2">{status.company}</td></tr>
+                    <tr><th>NIP</th><td colSpan="2">{status.nip}</td></tr>
+                    <tr>
+                        <th colSpan="3">Adress</th>
+                    </tr>
+                    <tr><th>Miasto</th><th>Ulica i numer</th><th>Kod pocztowy</th></tr>
+                    <tr>
+                        <td>{status.adress?.city}</td>
+                        <td>{status.adress?.street} {status.adress?.nr}</td>
+                        <td>{status.adress?.zipcode}</td>
+                    </tr>
                 </tbody>
             </table>
             <button className="btn-1" onClick={() => {
