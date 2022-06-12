@@ -65,6 +65,7 @@ export default function AddClient() {
     return (
         <div><p className="error">{error}</p>
             <form>
+                <h3>Dodawanie nowego klienta</h3>
                 <input type="text" onChange={stateClient} value={name} name="name" placeholder="Podaj Imie"></input>
                 <input type="text" onChange={stateClient} value={company} name="company" placeholder="Podaj Firme"></input>
                 <input type="text" onChange={stateClient} value={nip} name="nip" placeholder="Podaj NIP"></input>

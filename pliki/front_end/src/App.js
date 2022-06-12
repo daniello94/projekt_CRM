@@ -4,6 +4,7 @@ import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
 import AddClient from "./routes/AddClient";
 import InfoCustomers from "./routes/InfoCustomers";
+import Actions from "./routes/Actions";
 import {
   Routes,
   Route
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="signup" element={<SignUp />} />
         <Route path="addclient" element={<AddClient />} />
         <Route path="infocustomers/:id" element={<InfoCustomers />} />
+        <Route path="actions/:id" element={<Actions />} />
 
       </Routes>
     </div>

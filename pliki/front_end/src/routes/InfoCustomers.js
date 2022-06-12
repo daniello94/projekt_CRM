@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -42,6 +42,7 @@ export default function InfoCustomers() {
     useEffect(() => {
         oneClient(id)
         setStatus('')
+
     }, []);
 
     if (upodate === status.id) {
@@ -85,7 +86,6 @@ export default function InfoCustomers() {
                     </tbody>
                 </table>
                 <button className="btn-1" onClick={() => upodateClient(status._id)}>Zapisz</button>
-                <button className="btn-1">Dodaj akcje</button>
                 <button className="btn-1" onClick={(() => setUpodate(""))}>Anuluj</button>
             </div>
         )
@@ -110,6 +110,21 @@ export default function InfoCustomers() {
                         <td>{status.adress?.street} {status.adress?.nr}</td>
                         <td>{status.adress?.zipcode}</td>
                     </tr>
+                    <tr>
+                        <th colSpan="3">Akcje</th>
+                    </tr>
+                    <tr><th>{status.actions?.contact}</th><th>Miejsce Spodkania</th><th>Data kontaktu</th></tr>
+                    <tr>
+                        <td>{status.actions?.contactNr}</td>
+                        <td>{status.actions?.visit}</td>
+                        <td>{status.actions?.startDate}</td>
+                    </tr>
+                    <tr>
+                        <th colSpan="3">Opis</th>
+                    </tr>
+                    <tr>
+                        <td colSpan="3">{status.actions?.textarea}</td>
+                    </tr>
                 </tbody>
             </table>
             <button className="btn-1" onClick={() => {
@@ -122,6 +137,7 @@ export default function InfoCustomers() {
                 setZipcode(status.adress.zipcode)
                 editClick(status.id)
             }}>Edytuj</button>
+            <Link className="btn-1" to={`/actions/${status._id}`}>Dodaj Akcje</Link>
         </div>
     )
 };
