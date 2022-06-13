@@ -18,9 +18,9 @@ export default function App() {
     <div className="App">
       <nav>
         <ul>
-          <li><Link className="ul-itm" to="/">Login</Link></li>
-          <li><Link className="ul-itm" to="/home">Home</Link></li>
-          <li><Link className="ul-itm" to="/signUp">Sign Up</Link></li>
+         {!user && <li><Link className="ul-itm" to="/">Login</Link></li>}
+          {user &&<li><Link className="ul-itm" to="/home">Home</Link></li>}
+         {!user &&<li><Link className="ul-itm" to="/signUp">Sign Up</Link></li>} 
 
         </ul>
       </nav>

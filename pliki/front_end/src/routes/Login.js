@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 export default function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,12 +20,15 @@ export default function Login(props) {
     }
 
     return (
-        <form onSubmit={userSubmit}>
-            <h3>Logowanie</h3>
-            <input type="text" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Podaj Login"></input>
-            <input type="password" onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Podaj Hasło"></input>
-            <button className="btn-1" type="submit">Zaloguj</button>
-        </form>
+        <div>
+            {props.user && <Navigate  to="/home"/>}
+            <form onSubmit={userSubmit}>
+                <h3>Logowanie</h3>
+                <input type="text" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Podaj Login"></input>
+                <input type="password" onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Podaj Hasło"></input>
+                <button className="btn-1" type="submit">Zaloguj</button>
+            </form>
+        </div>
     )
 
 };
