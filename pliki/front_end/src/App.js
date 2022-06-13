@@ -10,8 +10,10 @@ import {
   Route
 } from "react-router-dom";
 import "./routes/style/App.css";
+import { useState } from "react";
 
 export default function App() {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
   return (
     <div className="App">
       <nav>
@@ -24,7 +26,7 @@ export default function App() {
       </nav>
 
       <Routes>
-        <Route index element={<Login />} />
+        <Route index element={<Login user={user} setUser={setUser} />} />
         <Route path="home" element={<Home />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="addclient" element={<AddClient />} />

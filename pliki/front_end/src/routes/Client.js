@@ -22,7 +22,7 @@ export default function Client(props) {
 
         if(remove === clientDataq._id){
             return(
-                <tr>
+                <tr key={clientDataq._id}>
                 <td>
                     {clientDataq.name}
                 </td>

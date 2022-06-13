@@ -8,19 +8,19 @@ const validate = form => {
         return "Podaj poprawny email"
     }
 
-    if (!form.paswword) {
+    if (!form.password) {
         return "Wpisz hasło"
-    } else if (form.paswword.length < 6) {
+    } else if (form.password.length < 6) {
         return "Hasło musi zawierać minimum 6 znaków"
-    } else if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(form.paswword)) {
+    } else if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(form.password)) {
         return "Hasło musi zawierać znak specjalny np: @ ! # & % $"
-    } else if (!/^[^\s]*$/.test(form.paswword)) {
+    } else if (!/^[^\s]*$/.test(form.password)) {
         return "Hasło nie może zawierać pustych znaków"
     }
 
-    if (!form.paswwordRep) {
+    if (!form.passwordRep) {
         return "Powtórz hasło"
-    }else if (form.paswwordRep !== form.paswword) {
+    }else if (form.passwordRep !== form.password) {
         return "Podane hasła nie są identyczne"
     }
     return ""
@@ -30,8 +30,8 @@ export default function Login() {
     const [error, setError] = React.useState(null);
     const [form, setForm] = React.useState({
         email: "",
-        paswword: "",
-        paswwordRep: ""
+        password: "",
+        passwordRep: ""
     })
 
     const submitFanction = async (e) => {
@@ -41,16 +41,16 @@ export default function Login() {
             setError(errorss)
             return
         } else {
-            const { email, paswword, paswwordRep } = form
-            axios.post('http://127.0.0.1:8080/api/user/signup', { email, paswword, paswwordRep })
-                .then((res) => {
-                    console.log(res.data);
+            const { email, password, passwordRep } = form
+            axios.post('http://127.0.0.1:8080/api/user/signup', { email, password, passwordRep })
+                .then(() => {
+                   
                      setError(<span>Zostałeś zarejestrowany</span>)
                 })
                 setForm({
                     email: "",
-                    paswword: "",
-                    paswwordRep: ""
+                    password: "",
+                    passwordRep: ""
                 })
         }
 
@@ -63,7 +63,7 @@ export default function Login() {
         })
     }
 
-    const { email, paswword, paswwordRep } = form
+    const { email, password, passwordRep } = form
 
     return (
         <div >
@@ -71,8 +71,8 @@ export default function Login() {
             <form>
                 <h3>Rejestracja</h3>
                 <input onChange={StateSignUP} value={email} type="email" name="email" placeholder="Podaj email" ></input>
-                <input onChange={StateSignUP} value={paswword} type="password" name="paswword" placeholder="Podaj Hasło"></input>
-                <input onChange={StateSignUP} value={paswwordRep} type="password" name="paswwordRep" placeholder="Powtórz hasło"></input>
+                <input onChange={StateSignUP} value={password} type="password" name="password" placeholder="Podaj Hasło"></input>
+                <input onChange={StateSignUP} value={passwordRep} type="password" name="passwordRep" placeholder="Powtórz hasło"></input>
                 <button className="btn-1" onClick={submitFanction} type="submit" name="submit" >Zarejestruj</button>
             </form>
 

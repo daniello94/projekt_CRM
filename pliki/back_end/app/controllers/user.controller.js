@@ -9,6 +9,8 @@ function userAdd(data,cb){
             cb(err)
         }else{
             cb(null,user);
+            
+
         }
     })
 };
@@ -21,6 +23,7 @@ function userLogin(data,cb){
         }
         if(!user){
             cb(null,user)
+            return
         };
 
         bcrypt.compare(data.password, user.password, function(err,logged){

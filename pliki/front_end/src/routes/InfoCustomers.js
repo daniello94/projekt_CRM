@@ -35,7 +35,6 @@ export default function InfoCustomers() {
         axios.get('http://127.0.0.1:8080/api/client/' + id)
             .then((res) => {
                 setStatus(res.data)
-                console.log(res.data);
             })
     };
 

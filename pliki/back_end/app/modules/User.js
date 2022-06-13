@@ -15,9 +15,6 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
-    paswwordRep:{
-        type:String
-    }
 });
 
 schema.plugin(uniqueValidator);

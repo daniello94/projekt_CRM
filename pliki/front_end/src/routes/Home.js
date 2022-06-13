@@ -20,7 +20,6 @@ class Home extends Component {
             this.setState({
                 clientData:res.data
             })
-            console.log(res.data);
         })
 
     };

@@ -19,8 +19,8 @@ export default function Actions() {
                 contactNr, contact, visit, textarea, startDate
             }
         })
-            .then((res) => {
-                console.log(res.data);
+            .then(() => {
+                console.log("");
             })
     };
 
