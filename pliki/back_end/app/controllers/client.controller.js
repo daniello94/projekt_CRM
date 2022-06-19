@@ -51,11 +51,27 @@ function clientDelate(id,cb){
         }
     })
 }
+function actionAdd(data, cb) {
+    Client.updateOne(
+        { _id: data[0] }, 
+        { $push: { actions: data[1] } },
+        function(err,action){
+            if(err){
+                cb(err)
+            }else{
+                cb(null,action)
+            }
+        })
+        }
+   
+   
+
 
 module.exports = {
     list: clientList,
     get:clientGet,
     add: clientAdd,
     upodate: clientUpodate,
-    delete:clientDelate
+    delete:clientDelate,
+    action:actionAdd
 };

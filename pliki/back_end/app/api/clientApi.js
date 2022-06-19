@@ -69,4 +69,10 @@ router.delete('/delete/:id',function(req,res){
     })
 });
 
+router.put('/addActions/:id', function (req, res) {
+    client.action([req.params.id,req.body], function (err, action) {
+        if (err) res.send(err)
+        res.json(action)
+    })
+});
 module.exports = router;

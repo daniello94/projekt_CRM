@@ -6,7 +6,7 @@ const Actions = {
     contact:String,
     visit: String,
     textarea:String,
-    startDate:Date
+    startDate:String
 };
 
 const schema = mongoose.Schema({

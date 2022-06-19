@@ -3,7 +3,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function InfoCustomers() {
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState({
+        name: "",
+        company: "",
+        nip: "",
+        adress: {
+            city: "",
+            street: "",
+            nr: "",
+            zipcode: ""
+        },
+        actions: []
+    });
+
     const [name, setName] = useState("");
     const [company, setCompany] = useState("");
     const [nip, setNip] = useState("");
@@ -40,17 +52,18 @@ export default function InfoCustomers() {
 
     useEffect(() => {
         oneClient(id)
-        setStatus('')
 
     }, []);
-
+    console.log(status);
     if (upodate === status.id) {
         return (
-            <div>
+            <div >
                 <table>
                     <thead>
                         <tr>
-                            <th colSpan="5"><input type="text" value={name} onChange={(e) => setName(e.target.value)} name="name"></input></th>
+                            <th colSpan="5">
+                                <input type="text" value={name} onChange={(e) => setName(e.target.value)} name="name"></input>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,21 +122,31 @@ export default function InfoCustomers() {
                         <td>{status.adress?.street} {status.adress?.nr}</td>
                         <td>{status.adress?.zipcode}</td>
                     </tr>
-                    <tr>
-                        <th colSpan="3">Akcje</th>
-                    </tr>
-                    <tr><th>{status.actions?.contact}</th><th>Miejsce Spodkania</th><th>Data kontaktu</th></tr>
-                    <tr>
-                        <td>{status.actions?.contactNr}</td>
-                        <td>{status.actions?.visit}</td>
-                        <td>{status.actions?.startDate}</td>
-                    </tr>
-                    <tr>
-                        <th colSpan="3">Opis</th>
-                    </tr>
-                    <tr>
-                        <td colSpan="3">{status.actions?.textarea}</td>
-                    </tr>
+                    {status.actions.map((actions) => {
+                        return (
+                            <>
+                                <tr key={actions._id}>
+                                    <th colSpan="3">Akcje</th>
+                                </tr>
+                                <tr>
+                                    <th>{actions?.contact}</th>
+                                    <th>Miejsce Spodkania</th>
+                                    <th>Data kontaktu</th>
+                                </tr>
+                                <tr>
+                                    <td>{actions?.contactNr}</td>
+                                    <td>{actions?.visit}</td>
+                                    <td>{actions?.startDate}</td>
+                                </tr>
+                                <tr>
+                                    <th colSpan="3">Opis</th>
+                                </tr>
+                                <tr>
+                                    <td colSpan="3">{actions?.textarea}</td>
+                                </tr>
+                            </>
+                        )
+                    })}
                 </tbody>
             </table>
             <button className="btn-1" onClick={() => {

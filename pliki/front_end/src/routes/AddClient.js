@@ -13,10 +13,10 @@ const validate = (form) => {
 
     if (!form.nip) {
         return "wpisz NIP"
-    } else if (form.nip.length <= 8) {
-        return "Podałeś za mało cyfr NIP składa się z 9 liczb"
-    } else if (form.nip.length >= 10) {
-        return "Podałes za dużo cyf NIP składa się z 9 liczb"
+    } else if (form.nip.length <= 9) {
+        return "Podałeś za mało cyfr NIP składa się z 10 liczb"
+    } else if (form.nip.length >= 11) {
+        return "Podałes za dużo cyf NIP składa się z 10 liczb"
     } else if (/\D/.test(form.nip)) {
         return "Podałeś błędny znak NIP składa sie z samych cyfr"
     }
